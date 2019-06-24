@@ -2,25 +2,25 @@
 
 > A React Native App with local scheduled push notification to be used as reminders.
 
-# Clone the repo
+## Clone the repo
 
 ```bash
 $ git clone https://github.com/vikrantnegi/local-reminders
 ```
 
-# Install the dependencies
+## Install the dependencies
 
 ```bash
 $ yarn
 ```
 
-# Run the app
+## Run the app
 
 ```bash
 $ react-native run-ios
 $ react-native run-android
 ```
 
-# License
+## License
 
 MIT © [Vikrant Negi](https://github.com/vikrantnegi)
