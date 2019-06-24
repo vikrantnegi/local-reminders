@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "341466114468",
+    "firebase_url": "https://local-reminders.firebaseio.com",
+    "project_id": "local-reminders",
+    "storage_bucket": "local-reminders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341466114468:android:fa9a601ddd6fa864",
+        "android_client_info": {
+          "package_name": "com.localreminders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341466114468-aja3a3vs88hb8d6qu6j4r7kpck0736fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqBNCjPqSrSR0KJf1yZG-dxmt8LrDha-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341466114468-aja3a3vs88hb8d6qu6j4r7kpck0736fh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "341466114468-rsb465ge3n5r5ifoed24tqfjslblib8i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.localReminder.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

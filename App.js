@@ -6,44 +6,53 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Alert } from 'react-native';
+import firebase from 'react-native-firebase';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import Dashboard from './src/Dashboard';
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  componentDidMount() {
+    // Create notification channel required for Android devices
+    this.createNotificationChannel();
+
+    // Ask notification permission and add notification listener
+    this.checkPermission();
+  }
+
+  createNotificationChannel = () => {
+    // Build a android notification channel
+    const channel = new firebase.notifications.Android.Channel(
+      'reminder',
+      'Reminders Channel',
+      firebase.notifications.Android.Importance.High
+    ).setDescription('Used for getting reminder notification');
+
+    // Create the android notification channel
+    firebase.notifications().android.createChannel(channel);
+  };
+
+  checkPermission = async () => {
+    const enabled = await firebase.messaging().hasPermission();
+    if (enabled) {
+      this.notificationListener = firebase.notifications().onNotification(async notification => {
+        // Display your notification
+        await firebase.notifications().displayNotification(notification);
+      });
+    } else {
+      // user doesn't have permission
+      try {
+        await firebase.messaging().requestPermission();
+      } catch (error) {
+        Alert.alert(
+          'Unable to access the Notification permission. Please enable the Notification Permission from the settings'
+        );
+      }
+    }
+  };
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    return <Dashboard />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
