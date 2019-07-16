@@ -2,6 +2,8 @@
 
 > A React Native App with local scheduled push notification to be used as reminders.
 
+Read article about this on [Medium](https://medium.com/better-programming/react-native-local-scheduled-push-notification-with-firebase-8c775b71c35c)
+
 ### Clone the repo
 
 ```bash
